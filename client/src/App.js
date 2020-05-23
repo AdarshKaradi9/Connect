@@ -10,6 +10,9 @@ import CreateProfile from './components/profile-forms/CreateProfile'
 import EditProfile from './components/profile-forms/EditProfile'
 import AddExperience from './components/profile-forms/AddExperience'
 import AddEducation from './components/profile-forms/AddEducation'
+import Profiles from './components/profiles/Profiles'
+import Profile from './components/profile/Profile'
+import Posts from './components/posts/Posts'
 import PrivateRoute from'./components/routing/PrivateRoute' 
 // Redux
 import { Provider } from 'react-redux';
@@ -17,6 +20,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './util/setAuthToken';
 import './App.css';
+import Post from './components/post/Post';
 
 if(localStorage.token) {
   setAuthToken(localStorage.token)
@@ -36,13 +40,17 @@ const App = () => {
           <section className="container">
             <Alert />
             <Switch>
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
-              <Route exact path='/create-profile' component={CreateProfile} />
-              <Route exact path='/edit-profile' component={EditProfile} />
-              <Route exact path='/add-experience' component={AddExperience} />
-              <Route exact path='/add-education' component={AddEducation} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/profiles' component={Profiles} />
+              <PrivateRoute exact path='/profile/:id' component={Profile} />
+              <PrivateRoute exact path='/create-profile' component={CreateProfile} />
+              <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+              <PrivateRoute exact path='/add-experience' component={AddExperience} />
+              <PrivateRoute exact path='/add-education' component={AddEducation} />
+              <PrivateRoute exact path='/posts' component={Posts} />
+              <PrivateRoute exact path='/posts/:id' component={Post} />
             </Switch>
           </section>
         </Fragment>

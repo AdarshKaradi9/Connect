@@ -41,10 +41,10 @@ const EditProfile = ({ profile: { profile, loading}, createProfile, getCurrentPr
             linkedin: loading || !profile.social ? '' : profile.social.linkedin,
             youtube: loading || !profile.social ? '' : profile.social.youtube,
             instagram:
-                loading || !profile.social ? '' : profile.social.instagram,
+            loading || !profile.social ? '' : profile.social.instagram,
         });
 
-    }, [loading, getCurrentProfile]);
+    }, [ loading, getCurrentProfile]);
 
     const {
         company,

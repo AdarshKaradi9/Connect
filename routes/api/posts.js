@@ -61,7 +61,6 @@ router.get('/', auth, async (req, res) => {
 router.get('/:post_id', auth, async (req, res) => {
     try{
         const post = await Post.findById(req.params.post_id);
-        console.log(post);
         if(!post) {
             return res.status(404).json({ msg: 'Post not found' });
         }
@@ -114,15 +113,13 @@ router.put('/like/:post_id', auth, async (req, res) => {
         if(!post) {
             return res.status(404).json({ msg: 'Post not found' });
         }
-        console.log(req.user.id);
-        console.log(post);
         if(post.likes.filter( like => like.user.toString() === req.user.id).length > 0) {
             return res.status(400).json({ msg: 'Post you have already liked'});
         }
         
         post.likes.unshift({ user: req.user.id });
         await post.save();
-
+        
         res.json(post.likes);
         
     } catch (err) {
@@ -190,7 +187,7 @@ async (req, res) => {
         }
         post.comments.unshift(newComment);
         await post.save();
-        res.json(post);
+        res.json(post.comments);
     } catch(err) {
         console.error(err.message);
         return res.status(400).send('Server Error')
@@ -204,17 +201,18 @@ async (req, res) => {
 router.delete('/comment/:post_id/:com_id', auth,
 async (req, res) => {
     try {
+        
         const post = await Post.findById(req.params.post_id);
         
         if(!post) {
             return res.status(404).json({ msg: 'Post not found' });
         }
-
-        const removeInd = post.comments.map(comment => comment.user.toString()).indexOf(req.params.comm_id);
+        const removeInd = post.comments.map(comment => comment.id).indexOf(req.params.com_id);
         if(removeInd==-1) {
             return res.status(400).json({ msg: 'Comment does not exists'})
         }
-        post.comments.splice(removeInd);
+        
+        post.comments.splice(removeInd, 1);
         await post.save();
         res.json(post);
     } catch(err) {
