@@ -35,17 +35,17 @@ async (req, res) => {
     const { email, password} = req.body; 
     try {
         // See if user exists
+        console.log(email,password)
         let user = await User.findOne({ email });
         if(!user) {
             return res.status(400).json({ errors: [{ msg: 'Invalid Credentials or User does not exists' }]})
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
-
+        console.log(isMatch, user.password)
         if(!isMatch) {
-            if(!user) {
-                return res.status(400).json({ errors: [{ msg: 'Invalid Credentials or User does not exists' }]})
-            }
+            return res.status(400).json({ errors: [{ msg: 'Invalid Credentials or User does not exists' }]})
+
         }
 
         const payload = {

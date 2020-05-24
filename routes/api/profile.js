@@ -237,7 +237,7 @@ router.put('/education',[ auth, [
 async (req, res) => {
     const error = validationResult(req);
     if(!error.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
+        return res.status(400).json({ error: error.array() })
     }
 
     const edu = {

@@ -42,10 +42,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     </div>
                     <div className="form-group">
                         <input type="email" placeholder="Email Address" value={email} onChange={ e => onChange(e)} name="email" />
-                        <small className="form-text"
-                            >This site uses Gravatar so if you want a profile image, use a
-                            Gravatar email</small
-                        >
+                        
                     </div>
                     <div className="form-group">
                         <input

@@ -8,7 +8,7 @@ const ProfileForms = ({ addPost }) => {
      return (
         <div class="post-form">
         <div class="bg-primary p">
-          <h3>Say Something...</h3>
+          <h3>Post here...</h3>
         </div>
         <form class="form my-1" onSubmit={e => {
             e.preventDefault();
@@ -24,7 +24,7 @@ const ProfileForms = ({ addPost }) => {
             onChange={e => setText(e.target.value)}
             required
           ></textarea>
-          <input type="submit" class="btn btn-dark my-1" value="Submit" />
+          <input type="submit" class="btn btn-dark my-1" value="Post" />
         </form>
       </div>
     )

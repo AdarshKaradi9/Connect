@@ -92,31 +92,31 @@ const EditProfile = ({ profile: { profile, loading}, createProfile, getCurrentPr
             <option value="Other">Other</option>
           </select>
           <small className="form-text"
-            >Give us an idea of where you are at in your career</small
+            >Give present status of your career</small
           >
         </div>
         <div className="form-group">
           <input type="text" placeholder="Company" name="company" value={company} onChange={e => onChange(e)}/>
           <small className="form-text"
-            >Could be your own company or one you work for</small
+            >Company you work for or you own</small
           >
         </div>
         <div className="form-group">
           <input type="text" placeholder="Website" name="website" value={website} onChange={e => onChange(e)} />
           <small className="form-text"
-            >Could be your own or a company website</small
+            >Your own website</small
           >
         </div>
         <div className="form-group">
           <input type="text" placeholder="Location" name="location" value={location} onChange={e => onChange(e)} />
           <small className="form-text"
-            >City & state suggested (eg. Boston, MA)</small
+            >City & state suggested (eg. Pune, Maharashtra)</small
           >
         </div>
         <div className="form-group">
           <input type="text" placeholder="* Skills" name="skills" value={skills} onChange={e => onChange(e)} />
           <small className="form-text"
-            >Please use comma separated values (eg.
+            >Use comma separated values (eg.
             HTML,CSS,JavaScript,PHP)</small
           >
         </div>
@@ -128,7 +128,7 @@ const EditProfile = ({ profile: { profile, loading}, createProfile, getCurrentPr
             value={githubusername} onChange={e => onChange(e)}
           />
           <small className="form-text"
-            >If you want your latest repos and a Github link, include your
+            >For latest repos and a Github link, include your
             username</small
           >
         </div>
