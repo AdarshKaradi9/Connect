@@ -1,10 +1,5 @@
 "DevConnector" 
-mongodb atlas:
-    username: adarshkaradi009@gmail.com
-    password: adarsh91299
-    database:
-        username: adarsh123
-        password: adarsh123
+
 
 1. Create a repo with name of the application
 2. Create .gitignore and add node_modules/ 
